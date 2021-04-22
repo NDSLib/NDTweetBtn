@@ -36,7 +36,15 @@ private class NDActionButton: UIView {
     }
 }
 
-//public class
+public class NDTweetBtnAction {
+    let image: UIImage
+    let handler: (NDTweetBtnAction) -> Void?
+    
+    public init(image: UIImage, handler: @escaping (NDTweetBtnAction) -> Void?) {
+        self.image = image
+        self.handler = handler
+    }
+}
 
 
 @available(iOS 13.0, *)
@@ -57,14 +65,6 @@ public class NDTweetBtn: UIView{
         view.addGestureRecognizer(longPress)
         
         view.setImage(UIImage(systemName: "note.text.badge.plus")!)
-//        let panGR = UIPanGestureRecognizer(target: self, action: #selector(self.onPan))
-//        view.addGestureRecognizer(panGR)
-//        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-//        imgView.image = UIImage(systemName: "note.text.badge.plus")
-//        imgView.tintColor = .white
-//        imgView.center = view.center
-//        view.addSubview(imgView)
-//        view.layer.cornerRadius = self.frame.width / 2
         return view
     }()
     
@@ -92,7 +92,7 @@ public class NDTweetBtn: UIView{
         return view
     }()
     
-    private lazy var actionBtn3: NDActionButton = {
+    private lazy var actionBtn0: NDActionButton = {
        let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 0
         view.frame.origin.y -= 130
@@ -100,6 +100,9 @@ public class NDTweetBtn: UIView{
         view.setImage(UIImage(systemName: "light.min")!)
         return view
     }()
+    
+    private var actions: [NDTweetBtnAction] = []
+    private var selectedIndex: Int?
     
     
     public override func layoutSubviews() {
@@ -126,8 +129,21 @@ public class NDTweetBtn: UIView{
 //        if isPressing { print("moving" )}
 //    }
     
-    @objc func onPan(sender: UIPanGestureRecognizer) {
-        if isPressing { print("panning") }
+    public func addAction(action: NDTweetBtnAction) {
+        actions.append(action)
+        // FIXME
+        var btns = [actionBtn0, actionBtn1, actionBtn2]
+        for (index, item) in actions.enumerated(){
+            btns[index].isHidden = false
+            btns[index].setImage(item.image)
+//            btns.remove(at: index)
+        }
+        btns.removeSubrange(0...actions.count - 1)
+//        for index in 0...actions.count - 1{
+//            print(index)
+//            btns.remove(at: <#T##Int#>)
+//        }
+        btns.forEach{ $0.isHidden = true }
     }
     
     @objc func onLongPressed(sender: UILongPressGestureRecognizer) {
@@ -136,19 +152,24 @@ public class NDTweetBtn: UIView{
         }else if sender.state == .changed {
 //            print("changed", sender.location(in: baseButton))
             guard let actionIndex = whichActionBtn(point: sender.location(in: baseButton)) else { return }
+            selectedIndex = actionIndex
             // FIXME
-            var actionBtns = [actionBtn1, actionBtn2, actionBtn3]
+            var actionBtns = [actionBtn0, actionBtn1, actionBtn2]
             UIView.animate(withDuration: 0.1, animations: {
-                actionBtns[actionIndex - 1].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                actionBtns[actionIndex].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             })
-            actionBtns.remove(at: actionIndex - 1)
+            actionBtns.remove(at: actionIndex)
             UIView.animate(withDuration: 0.1, animations: {
                 actionBtns.forEach({ $0.transform = CGAffineTransform(scaleX: 1, y: 1)})
             })
         }else if sender.state == .ended {
-            [self.actionBtn1, self.actionBtn2, self.actionBtn3]
+            [self.actionBtn1, self.actionBtn2, self.actionBtn0]
                 .forEach{ $0.transform = CGAffineTransform(scaleX: 1, y: 1)}
             isPressing = false
+            
+            if let index = selectedIndex {
+                actions[index].handler(actions[index])
+            }
 //            UIView.animate(withDuration: 0.1, animations: {
 //                [self.actionBtn1, self.actionBtn2, self.actionBtn3]
 //                    .forEach{ $0.transform = CGAffineTransform(scaleX: 1, y: 1) }
@@ -163,7 +184,9 @@ public class NDTweetBtn: UIView{
         baseButton.imageView.frame.size = CGSize(width: 20, height: 20)
         baseButton.imageView.center = baseButton.center
         
-        [self.actionBtn1, self.actionBtn2, self.actionBtn3]
+        selectedIndex = nil
+        
+        [self.actionBtn1, self.actionBtn2, self.actionBtn0]
             .forEach{
                 $0.frame = baseButton.bounds
                 $0.alpha = 1
@@ -173,7 +196,7 @@ public class NDTweetBtn: UIView{
         UIView.animate(withDuration: 0.1, animations: {
             self.actionBtn1.frame.origin = self.baseButton.frame.insetBy(dx: -90, dy: -90).origin
             self.actionBtn2.frame.origin = self.baseButton.frame.insetBy(dx: -120, dy: -10).origin
-            self.actionBtn3.frame.origin = self.baseButton.frame.insetBy(dx: -5, dy: -130).origin
+            self.actionBtn0.frame.origin = self.baseButton.frame.insetBy(dx: -5, dy: -130).origin
             self.baseButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9);
         }, completion: {_ in
             self.baseButton.layer.cornerRadius = self.baseButton.bounds.width / 2
@@ -191,7 +214,7 @@ public class NDTweetBtn: UIView{
         UIView.animate(withDuration: 0.1, animations: {
             self.baseButton.transform = CGAffineTransform(scaleX: 1, y: 1)
             
-            [self.actionBtn1, self.actionBtn2, self.actionBtn3]
+            [self.actionBtn1, self.actionBtn2, self.actionBtn0]
                 .forEach{
                     $0.frame = self.baseButton.bounds
                     $0.alpha = 0
@@ -199,7 +222,7 @@ public class NDTweetBtn: UIView{
         }, completion: {_ in
             self.actionBtn1.removeFromSuperview()
             self.actionBtn2.removeFromSuperview()
-            self.actionBtn3.removeFromSuperview()
+            self.actionBtn0.removeFromSuperview()
         })
         
     }
@@ -210,7 +233,7 @@ public class NDTweetBtn: UIView{
         }else if diff < 70 {
             return 2
         }else if diff > 70 {
-            return 3
+            return 0
         }else {
             return nil
         }

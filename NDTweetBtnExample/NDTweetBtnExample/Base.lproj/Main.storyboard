@@ -17,33 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIo-7a-47N" customClass="NDTweetBtn" customModule="NDTweetBtn">
-                                <rect key="frame" x="322" y="738" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="AdY-nx-96A"/>
-                                    <constraint firstAttribute="width" constant="60" id="hIA-Qf-dka"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選択されていません。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBA-Z6-1nW">
+                                <rect key="frame" x="120" y="437.5" width="174" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dIo-7a-47N" secondAttribute="bottom" constant="64" id="lFG-zR-nPr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dIo-7a-47N" secondAttribute="trailing" constant="32" id="sxm-PY-ssh"/>
+                            <constraint firstItem="IBA-Z6-1nW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6CF-TC-W80"/>
+                            <constraint firstItem="IBA-Z6-1nW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X4J-Aq-aSn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resLabel" destination="IBA-Z6-1nW" id="13S-rS-7Uf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="97" y="70"/>
+            <point key="canvasLocation" x="95.652173913043484" y="69.642857142857139"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="dIo-7a-47N">
-            <size key="intrinsicContentSize" width="46" height="30"/>
-        </designable>
-    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
