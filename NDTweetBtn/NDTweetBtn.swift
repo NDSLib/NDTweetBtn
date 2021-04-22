@@ -13,8 +13,9 @@ private class NDActionButton: UIView {
        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         view.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
         view.tintColor = .white
+        view.contentMode = .scaleAspectFit
         // FIXME initで
-        view.image = UIImage(systemName: "note.text.badge.plus")
+//        view.image = UIImage(systemName: "note.text.badge.plus")
         return view
     }()
     public override func layoutSubviews() {
@@ -29,7 +30,14 @@ private class NDActionButton: UIView {
         addSubview(imageView)
         
     }
+    
+    public func setImage(_ image: UIImage) {
+        imageView.image = image
+    }
 }
+
+//public class
+
 
 @available(iOS 13.0, *)
 @IBDesignable
@@ -41,24 +49,22 @@ public class NDTweetBtn: UIView{
         }
     }
     
-    private lazy var baseButton: UIView = {
-        let view = UIView(frame: bounds)
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOpacity = 0.5
-        view.layer.shadowRadius = 4
+    private lazy var baseButton: NDActionButton = {
+        let view = NDActionButton(frame: bounds)
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
-        view.clipsToBounds = true
+//        view.clipsToBounds = true
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.onLongPressed))
         view.addGestureRecognizer(longPress)
+        
+        view.setImage(UIImage(systemName: "note.text.badge.plus")!)
 //        let panGR = UIPanGestureRecognizer(target: self, action: #selector(self.onPan))
 //        view.addGestureRecognizer(panGR)
-        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        imgView.image = UIImage(systemName: "note.text.badge.plus")
-        imgView.tintColor = .white
-        imgView.center = view.center
-        view.addSubview(imgView)
-        view.layer.cornerRadius = self.frame.width / 2
+//        let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        imgView.image = UIImage(systemName: "note.text.badge.plus")
+//        imgView.tintColor = .white
+//        imgView.center = view.center
+//        view.addSubview(imgView)
+//        view.layer.cornerRadius = self.frame.width / 2
         return view
     }()
     
@@ -73,6 +79,7 @@ public class NDTweetBtn: UIView{
         view.frame.origin.x -= 90
         view.frame.origin.y -= 90
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.setImage(UIImage(systemName: "pencil")!)
         return view
     }()
     
@@ -81,6 +88,7 @@ public class NDTweetBtn: UIView{
         view.frame.origin.x -= 120
         view.frame.origin.y -= 10
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.setImage(UIImage(systemName: "moon")!)
         return view
     }()
     
@@ -89,6 +97,7 @@ public class NDTweetBtn: UIView{
         view.frame.origin.x -= 0
         view.frame.origin.y -= 130
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.setImage(UIImage(systemName: "light.min")!)
         return view
     }()
     
@@ -148,7 +157,11 @@ public class NDTweetBtn: UIView{
     }
     
     private func onPressing() {
-        baseButton.backgroundColor = .black
+        baseButton.backgroundColor = .white
+        baseButton.setImage(UIImage(systemName: "xmark")!)
+        baseButton.imageView.tintColor = .darkGray
+        baseButton.imageView.frame.size = CGSize(width: 20, height: 20)
+        baseButton.imageView.center = baseButton.center
         
         [self.actionBtn1, self.actionBtn2, self.actionBtn3]
             .forEach{
@@ -162,12 +175,19 @@ public class NDTweetBtn: UIView{
             self.actionBtn2.frame.origin = self.baseButton.frame.insetBy(dx: -120, dy: -10).origin
             self.actionBtn3.frame.origin = self.baseButton.frame.insetBy(dx: -5, dy: -130).origin
             self.baseButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9);
+        }, completion: {_ in
+            self.baseButton.layer.cornerRadius = self.baseButton.bounds.width / 2
         })
         
     }
     
     private func onRelease() {
         baseButton.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        baseButton.setImage(UIImage(systemName: "note.text.badge.plus")!)
+        baseButton.imageView.tintColor = .white
+        baseButton.imageView.frame.size = CGSize(width: 30, height: 30)
+        baseButton.imageView.center = baseButton.center
+        
         UIView.animate(withDuration: 0.1, animations: {
             self.baseButton.transform = CGAffineTransform(scaleX: 1, y: 1)
             
