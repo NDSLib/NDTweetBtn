@@ -1,0 +1,6 @@
+framework module NDTweetBtn {
+  umbrella header "NDTweetBtn-umbrella.h"
+
+  export *
+  module * { export * }
+}

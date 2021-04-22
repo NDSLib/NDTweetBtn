@@ -1,0 +1,16 @@
+PODS:
+  - NDTweetBtn (1.0.0)
+
+DEPENDENCIES:
+  - NDTweetBtn (from `../`)
+
+EXTERNAL SOURCES:
+  NDTweetBtn:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NDTweetBtn: 0592dc4579e18a78cdf25c7c4a022c1716c38fa7
+
+PODFILE CHECKSUM: e0bd60e25163ef4c4ccc8f7e2a5f33f8a574fd33
+
+COCOAPODS: 1.10.1

@@ -1,0 +1,29 @@
+{
+  "name": "NDTweetBtn",
+  "version": "1.0.0",
+  "summary": "NDTweetBtn!",
+  "description": "NDTweetBtn!?",
+  "frameworks": [
+    "Foundation",
+    "UIKit"
+  ],
+  "homepage": "https://github.com/hirossan4049/NDTestLib",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "hirossan4049": "haruto405329@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/hirossan4049/NDTestLib.git",
+    "tag": "1.0.0"
+  },
+  "source_files": "NDTweetBtn/*",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}
