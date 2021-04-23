@@ -29,8 +29,8 @@ let action1 = NDTweetBtnAction(
     image: UIImage(systemName: "flame")!,
     handler: { (NDTweetBtnAction) -> Void in
                   print("flame")
-                  self.resLabel.text = "flame"
-             })
+             }
+	)
 
 btn.addAction(action: action1)
 
