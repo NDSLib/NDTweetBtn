@@ -31,8 +31,7 @@ class ViewController: UIViewController {
         })
         
         let action3 = NDTweetBtnAction(
-            image: UIImage(
-                systemName: "moon.stars")!,
+            image: UIImage(systemName: "moon.stars")!,
                 handler: { (NDTweetBtnAction) -> Void in
                     print("moon")
                     self.resLabel.text = "moon"
