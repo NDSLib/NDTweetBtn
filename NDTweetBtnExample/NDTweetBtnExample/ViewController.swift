@@ -37,8 +37,8 @@ class ViewController: UIViewController {
                     self.resLabel.text = "moon"
                 })
 
-        btn.addAction(action: action1)
-        btn.addAction(action: action2)
+//        btn.addAction(action: action1)
+//        btn.addAction(action: action2)
 //        btn.addAction(action: action3)
 
         btn.setImage(UIImage(systemName: "swift")!)

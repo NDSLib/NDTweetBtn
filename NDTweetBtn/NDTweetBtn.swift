@@ -116,10 +116,12 @@ public class NDTweetBtn: UIView {
 
         addSubview(baseButton)
 
-//        let btns = [actionBtn0, actionBtn1, actionBtn2]
-//        .forEach {
-//            $0.isHidden = true
-//        }
+        if actions.count == 0 {
+            let btns = [actionBtn0, actionBtn1, actionBtn2]
+                    .forEach {
+                $0.isHidden = true
+            }
+        }
     }
 
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
