@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1474E2E6B3D47F264E41C72C0EA7ED06 /* NDTweetBtn-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A944894CCF6631E71941BAAB0DBB8FA2 /* NDTweetBtn-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		31C7C8E2B524A60FF0BDE47F3A61B0B0 /* NDTweetBtn-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 190AE2EAB50AFA50B56A7CFD302794B8 /* NDTweetBtn-dummy.m */; };
+		1474E2E6B3D47F264E41C72C0EA7ED06 /* NDTweetBtn-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66E2D26A82E48A7180971794D22D27E6 /* NDTweetBtn-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45E3702D734D89D421BF18776252EBDF /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18174B931654BFB8F75F6E304B7B2B86 /* NDTweetBtn.swift */; };
 		4B2EB73D221A33827FA9B3510C57AD63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
-		5E6A6EA8AE33D028A3A39A274BA00669 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB64B5DDDCF83D83B0C1AC528C22ABD /* NDTweetBtn.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		75139AB1D99BB56B50D3100311164A65 /* NDTweetBtn.h in Headers */ = {isa = PBXBuildFile; fileRef = C6E812EB21A574FA31854FEC211BA818 /* NDTweetBtn.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5CD99D8CA21725D24C0B761BC4B9FACA /* NDTweetBtnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB602EA332903B9E8FB0984584F210E2 /* NDTweetBtnViewController.swift */; };
+		75139AB1D99BB56B50D3100311164A65 /* NDTweetBtn.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A4743D70158C2A35F6EBE2FA82C451A /* NDTweetBtn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		807A7B5656970447AE16713335A1D576 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
-		934D215F9CBFCCF7320D6B665F293F36 /* NDTweetBtnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A2D91264E94F845500ECDD5379A5C0 /* NDTweetBtnViewController.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		C71E18460CA281455C786BCBC0426A19 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 89F901152952CA3D6717D9B2AFB2864B /* Info.plist */; };
+		8F40262D2CAFE32442427FDA25CFAE00 /* NDTweetBtn-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A2DE6F62BFC7CC31D0E9F09FC5413CC /* NDTweetBtn-dummy.m */; };
+		9BC3D0AADED0181537F92A31658C324E /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = CB2AAE9D74E539557CB3938B0960F546 /* Info.plist */; };
 		CC9C680BCA59C5B10A8CE86D6FA5AAD2 /* Pods-NDTweetBtnExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F3C2F616693AE9ACAAE97B300DC180 /* Pods-NDTweetBtnExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE7A39EB3E915864F167013C30ADAF83 /* Pods-NDTweetBtnExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 079525CAD819B8B2F7C5B27BA16ECC0B /* Pods-NDTweetBtnExample-dummy.m */; };
 		E9D053C7AE3F3ABD65B4D020AD6A8DA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5F6817D5DB40A0051FFDF4D2BC5CF475 /* PBXContainerItemProxy */ = {
+		37EFABDCE52922655374B02560527EF1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -31,33 +31,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03DA37F864642FD53BCEC226A6D08E8F /* NDTweetBtn.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = NDTweetBtn.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		079525CAD819B8B2F7C5B27BA16ECC0B /* Pods-NDTweetBtnExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NDTweetBtnExample-dummy.m"; sourceTree = "<group>"; };
+		0B025AFB3212652CE141E1B48CBF7529 /* NDTweetBtn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NDTweetBtn.release.xcconfig; sourceTree = "<group>"; };
 		176E45800CB7B40E737F70D55F99F372 /* Pods-NDTweetBtnExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NDTweetBtnExample-Info.plist"; sourceTree = "<group>"; };
-		190AE2EAB50AFA50B56A7CFD302794B8 /* NDTweetBtn-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NDTweetBtn-dummy.m"; sourceTree = "<group>"; };
-		1A7E4257308083B86EFD46D39D51FD85 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		2CB64B5DDDCF83D83B0C1AC528C22ABD /* NDTweetBtn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NDTweetBtn.swift; path = NDTweetBtn/NDTweetBtn.swift; sourceTree = "<group>"; };
+		18174B931654BFB8F75F6E304B7B2B86 /* NDTweetBtn.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NDTweetBtn.swift; path = NDTweetBtn/NDTweetBtn.swift; sourceTree = "<group>"; };
 		2D7AB9702D60005EEEA5AB94BF42C5F4 /* Pods-NDTweetBtnExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NDTweetBtnExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		35C639C1D94AFC4B0CCAB03F5672CD56 /* NDTweetBtn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = NDTweetBtn.framework; path = NDTweetBtn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		442E16F3D3E7F2E92C91D892EDF83158 /* NDTweetBtn-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NDTweetBtn-prefix.pch"; sourceTree = "<group>"; };
-		4B764DE1BFC7D3F37D5F4383A56749EF /* NDTweetBtn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NDTweetBtn.release.xcconfig; sourceTree = "<group>"; };
-		54A2D91264E94F845500ECDD5379A5C0 /* NDTweetBtnViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NDTweetBtnViewController.swift; path = NDTweetBtn/NDTweetBtnViewController.swift; sourceTree = "<group>"; };
-		606D7289DE38C06074C8B67A39832102 /* NDTweetBtn.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = NDTweetBtn.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		64744136DFE7E03ADAFB1AFE75B2E446 /* Pods-NDTweetBtnExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NDTweetBtnExample.debug.xcconfig"; sourceTree = "<group>"; };
-		6719E44B6D4039A30C39D94CC481F4A3 /* NDTweetBtn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NDTweetBtn.debug.xcconfig; sourceTree = "<group>"; };
+		66E2D26A82E48A7180971794D22D27E6 /* NDTweetBtn-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NDTweetBtn-umbrella.h"; sourceTree = "<group>"; };
+		6A2DE6F62BFC7CC31D0E9F09FC5413CC /* NDTweetBtn-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NDTweetBtn-dummy.m"; sourceTree = "<group>"; };
+		6AACCA88C46BF6C809E9611AFBC00916 /* NDTweetBtn-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NDTweetBtn-prefix.pch"; sourceTree = "<group>"; };
+		7A4743D70158C2A35F6EBE2FA82C451A /* NDTweetBtn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NDTweetBtn.h; path = NDTweetBtn/NDTweetBtn.h; sourceTree = "<group>"; };
 		83F609B52F714A715CF8F718BA5311C2 /* Pods-NDTweetBtnExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-NDTweetBtnExample.modulemap"; sourceTree = "<group>"; };
-		89F901152952CA3D6717D9B2AFB2864B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = NDTweetBtn/Info.plist; sourceTree = "<group>"; };
+		8B6022B41C4740E62E4E8396AA9022A8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		942948EF5ABF6EA162A2210831C1AA89 /* Pods-NDTweetBtnExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NDTweetBtnExample-frameworks.sh"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A944894CCF6631E71941BAAB0DBB8FA2 /* NDTweetBtn-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NDTweetBtn-umbrella.h"; sourceTree = "<group>"; };
-		B838C1877AA6B6EEF4E23AA2F23693F2 /* NDTweetBtn-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "NDTweetBtn-Info.plist"; sourceTree = "<group>"; };
-		C6E812EB21A574FA31854FEC211BA818 /* NDTweetBtn.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NDTweetBtn.h; path = NDTweetBtn/NDTweetBtn.h; sourceTree = "<group>"; };
+		AA994608712495138D26AC121E321E83 /* NDTweetBtn-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "NDTweetBtn-Info.plist"; sourceTree = "<group>"; };
+		B984FAEEF6A652BE8C43B3D1FF08E737 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		BB602EA332903B9E8FB0984584F210E2 /* NDTweetBtnViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NDTweetBtnViewController.swift; path = NDTweetBtn/NDTweetBtnViewController.swift; sourceTree = "<group>"; };
 		C7F3C2F616693AE9ACAAE97B300DC180 /* Pods-NDTweetBtnExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NDTweetBtnExample-umbrella.h"; sourceTree = "<group>"; };
+		CB2AAE9D74E539557CB3938B0960F546 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = NDTweetBtn/Info.plist; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		E964453568104D6485F00C0AB6B4BA68 /* Pods-NDTweetBtnExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NDTweetBtnExample.release.xcconfig"; sourceTree = "<group>"; };
 		EA609BE207E68574CD42C670E044D6FA /* Pods-NDTweetBtnExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NDTweetBtnExample-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		F358C458EEBE2BDA1710D09ACB333F49 /* NDTweetBtn.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NDTweetBtn.modulemap; sourceTree = "<group>"; };
+		F59658AEBA6B36B303D19213B5DAC83F /* NDTweetBtn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NDTweetBtn.debug.xcconfig; sourceTree = "<group>"; };
 		FB6EC9F3702A792BE1A2061A0E683376 /* Pods_NDTweetBtnExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NDTweetBtnExample.framework; path = "Pods-NDTweetBtnExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE9662F41F3F56BCB7BBD80E8EC98E06 /* NDTweetBtn.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = NDTweetBtn.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,19 +98,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3BE8B44A7795130D217C347A69C9A546 /* Support Files */ = {
+		32B1E4060E40A55F504234529DD40E62 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F358C458EEBE2BDA1710D09ACB333F49 /* NDTweetBtn.modulemap */,
-				190AE2EAB50AFA50B56A7CFD302794B8 /* NDTweetBtn-dummy.m */,
-				B838C1877AA6B6EEF4E23AA2F23693F2 /* NDTweetBtn-Info.plist */,
-				442E16F3D3E7F2E92C91D892EDF83158 /* NDTweetBtn-prefix.pch */,
-				A944894CCF6631E71941BAAB0DBB8FA2 /* NDTweetBtn-umbrella.h */,
-				6719E44B6D4039A30C39D94CC481F4A3 /* NDTweetBtn.debug.xcconfig */,
-				4B764DE1BFC7D3F37D5F4383A56749EF /* NDTweetBtn.release.xcconfig */,
+				FE9662F41F3F56BCB7BBD80E8EC98E06 /* NDTweetBtn.modulemap */,
+				6A2DE6F62BFC7CC31D0E9F09FC5413CC /* NDTweetBtn-dummy.m */,
+				AA994608712495138D26AC121E321E83 /* NDTweetBtn-Info.plist */,
+				6AACCA88C46BF6C809E9611AFBC00916 /* NDTweetBtn-prefix.pch */,
+				66E2D26A82E48A7180971794D22D27E6 /* NDTweetBtn-umbrella.h */,
+				F59658AEBA6B36B303D19213B5DAC83F /* NDTweetBtn.debug.xcconfig */,
+				0B025AFB3212652CE141E1B48CBF7529 /* NDTweetBtn.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "NDTweetBtnExample/Pods/Target Support Files/NDTweetBtn";
+			sourceTree = "<group>";
+		};
+		34325E8168F794F446A8818E949E6C71 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				8B6022B41C4740E62E4E8396AA9022A8 /* LICENSE */,
+				03DA37F864642FD53BCEC226A6D08E8F /* NDTweetBtn.podspec */,
+				B984FAEEF6A652BE8C43B3D1FF08E737 /* README.md */,
+			);
+			name = Pod;
 			sourceTree = "<group>";
 		};
 		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
@@ -121,27 +132,18 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		8F1AD27E48B17852D0AB2B89EDA9E4BB /* NDTweetBtn */ = {
+		7C4580BE59189CD3155CED2DEF8E207B /* NDTweetBtn */ = {
 			isa = PBXGroup;
 			children = (
-				89F901152952CA3D6717D9B2AFB2864B /* Info.plist */,
-				C6E812EB21A574FA31854FEC211BA818 /* NDTweetBtn.h */,
-				2CB64B5DDDCF83D83B0C1AC528C22ABD /* NDTweetBtn.swift */,
-				54A2D91264E94F845500ECDD5379A5C0 /* NDTweetBtnViewController.swift */,
-				AFD1376C9C895D2E31C06E1CBC72A141 /* Pod */,
-				3BE8B44A7795130D217C347A69C9A546 /* Support Files */,
+				CB2AAE9D74E539557CB3938B0960F546 /* Info.plist */,
+				7A4743D70158C2A35F6EBE2FA82C451A /* NDTweetBtn.h */,
+				18174B931654BFB8F75F6E304B7B2B86 /* NDTweetBtn.swift */,
+				BB602EA332903B9E8FB0984584F210E2 /* NDTweetBtnViewController.swift */,
+				34325E8168F794F446A8818E949E6C71 /* Pod */,
+				32B1E4060E40A55F504234529DD40E62 /* Support Files */,
 			);
 			name = NDTweetBtn;
 			path = ../..;
-			sourceTree = "<group>";
-		};
-		AFD1376C9C895D2E31C06E1CBC72A141 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				606D7289DE38C06074C8B67A39832102 /* NDTweetBtn.podspec */,
-				1A7E4257308083B86EFD46D39D51FD85 /* README.md */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -158,7 +160,7 @@
 		DD8022D6B003AC6F806B7845B65568D5 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8F1AD27E48B17852D0AB2B89EDA9E4BB /* NDTweetBtn */,
+				7C4580BE59189CD3155CED2DEF8E207B /* NDTweetBtn */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -224,7 +226,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				1E02C44389A9AA38D0799FFB4D8FCCC3 /* PBXTargetDependency */,
+				037D75F2C9483E34CAF6F4632DDCDA2F /* PBXTargetDependency */,
 			);
 			name = "Pods-NDTweetBtnExample";
 			productName = "Pods-NDTweetBtnExample";
@@ -236,7 +238,7 @@
 			buildConfigurationList = AE2DB33369C84C536489E1E488074205 /* Build configuration list for PBXNativeTarget "NDTweetBtn" */;
 			buildPhases = (
 				248C8D1DB9E72D3EFFE817A8387D66A3 /* Headers */,
-				5DE9BA713C743AD63BBE770E0EBF568C /* Sources */,
+				46A9AA85BBAA6F088F21EC8909F53A2F /* Sources */,
 				BE41386DBB98600BB5CA4E17CEF1678C /* Frameworks */,
 				20B350A5283C9B3DEA41429010753B6F /* Resources */,
 			);
@@ -303,32 +305,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5DE9BA713C743AD63BBE770E0EBF568C /* Sources */ = {
+		46A9AA85BBAA6F088F21EC8909F53A2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C71E18460CA281455C786BCBC0426A19 /* Info.plist in Sources */,
-				31C7C8E2B524A60FF0BDE47F3A61B0B0 /* NDTweetBtn-dummy.m in Sources */,
-				5E6A6EA8AE33D028A3A39A274BA00669 /* NDTweetBtn.swift in Sources */,
-				934D215F9CBFCCF7320D6B665F293F36 /* NDTweetBtnViewController.swift in Sources */,
+				9BC3D0AADED0181537F92A31658C324E /* Info.plist in Sources */,
+				8F40262D2CAFE32442427FDA25CFAE00 /* NDTweetBtn-dummy.m in Sources */,
+				45E3702D734D89D421BF18776252EBDF /* NDTweetBtn.swift in Sources */,
+				5CD99D8CA21725D24C0B761BC4B9FACA /* NDTweetBtnViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1E02C44389A9AA38D0799FFB4D8FCCC3 /* PBXTargetDependency */ = {
+		037D75F2C9483E34CAF6F4632DDCDA2F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NDTweetBtn;
 			target = FC93B8F834E7C2C3FE2F60A5F7352DA6 /* NDTweetBtn */;
-			targetProxy = 5F6817D5DB40A0051FFDF4D2BC5CF475 /* PBXContainerItemProxy */;
+			targetProxy = 37EFABDCE52922655374B02560527EF1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1CF91A130DD2E0183C25254BD7022A82 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6719E44B6D4039A30C39D94CC481F4A3 /* NDTweetBtn.debug.xcconfig */;
+			baseConfigurationReference = F59658AEBA6B36B303D19213B5DAC83F /* NDTweetBtn.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -528,7 +530,7 @@
 		};
 		DD4751F031DE454280F1C3674164CBD5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B764DE1BFC7D3F37D5F4383A56749EF /* NDTweetBtn.release.xcconfig */;
+			baseConfigurationReference = 0B025AFB3212652CE141E1B48CBF7529 /* NDTweetBtn.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";

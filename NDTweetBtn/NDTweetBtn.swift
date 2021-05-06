@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 fileprivate extension Array {
     subscript(safe index: Index) -> Element? {
@@ -33,9 +34,6 @@ public class NDActionButton: UIView {
 
         layer.cornerRadius = frame.width / 2
         addSubview(imageView)
-        
-//        isUserInteractionEnabled = false
-
     }
 
     public func setImage(_ image: UIImage) {
@@ -60,6 +58,7 @@ public class NDTweetBtnAction {
 public class NDTweetBtn: UIView {
     private var isPressing = false {
         didSet {
+            AudioServicesPlaySystemSound(1519)
             if isPressing {
                 onPressing()
             } else {
@@ -71,17 +70,13 @@ public class NDTweetBtn: UIView {
     private lazy var baseButton: NDActionButton = {
         let view = NDActionButton(frame: bounds)
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
-//        view.clipsToBounds = true
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.onLongPressed))
         view.addGestureRecognizer(longPress)
-
-//        view.setImage(UIImage(systemName: "note.text.badge.plus")!)
         return view
     }()
 
     public override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-//        setupAttributes()
     }
 
     private lazy var actionBtn1: NDActionButton = {
@@ -122,13 +117,12 @@ public class NDTweetBtn: UIView {
     private var isInBaseBtn: Bool = false
     private var baseBtnImg: UIImage!
 
+    public var tapped: (() -> Void?)?
 
     public override func layoutSubviews() {
         super.layoutSubviews()
 
         addSubview(baseButton)
-//        frame.size.width = 300
-//        frame.size.height = 300
 
         if actions.count == 0 {
             let btns = [actionBtn0, actionBtn1, actionBtn2]
@@ -142,7 +136,7 @@ public class NDTweetBtn: UIView {
         if isPressing {
             isPressing = !isPressing
         }else {
-            print("tweet")
+            tapped?()
         }
     }
 
@@ -170,7 +164,6 @@ public class NDTweetBtn: UIView {
     }
 
     @objc func onActionBtnPressed(sender: UITapGestureRecognizer) {
-        print("onActionButtonPOresserdede")
         actions[safe: sender.view!.tag]?.handler(actions[sender.view!.tag])
         isPressing = false
     }
@@ -188,6 +181,8 @@ public class NDTweetBtn: UIView {
             guard let actionIndex = whichActionBtn(point: pos) else {
                 return
             }
+            
+            AudioServicesPlaySystemSound(1519)
             selectedIndex = actionIndex
             // FIXME
             var actionBtns = [actionBtn0, actionBtn1, actionBtn2]
@@ -230,14 +225,21 @@ public class NDTweetBtn: UIView {
             $0.alpha = 1
             addSubview($0)
         }
+        
+        let animation = CABasicAnimation(keyPath: "cornerRadius")
+        animation.duration = 0.1
+        animation.toValue = self.baseButton.bounds.width / 2
+        animation.autoreverses = false
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        baseButton.layer.add(animation, forKey: nil)
 
         UIView.animate(withDuration: 0.1, animations: {
             self.actionBtn1.frame.origin = self.baseButton.frame.insetBy(dx: -90, dy: -90).origin
             self.actionBtn2.frame.origin = self.baseButton.frame.insetBy(dx: -120, dy: -10).origin
             self.actionBtn0.frame.origin = self.baseButton.frame.insetBy(dx: -5, dy: -130).origin
-            self.baseButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8);
+            self.baseButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         }, completion: { _ in
-            self.baseButton.layer.cornerRadius = self.baseButton.bounds.width / 2
         })
 
     }
@@ -285,11 +287,11 @@ public class NDTweetBtn: UIView {
         let convertedactionBtn2: CGPoint = self.actionBtn2.convert(point, from: self)
         let convertedBaseButton: CGPoint = self.baseButton.convert(point, to: self)
 
-        if self.actionBtn1.bounds.contains(convertedactionBtn0) {
-            return self.actionBtn1.hitTest(convertedactionBtn0, with: event)
+        if self.actionBtn0.bounds.contains(convertedactionBtn0) {
+            return self.actionBtn0.hitTest(convertedactionBtn0, with: event)
         }
-        else if self.actionBtn2.bounds.contains(convertedactionBtn1) {
-            return self.actionBtn2.hitTest(convertedactionBtn1, with: event)
+        else if self.actionBtn1.bounds.contains(convertedactionBtn1) {
+            return self.actionBtn1.hitTest(convertedactionBtn1, with: event)
         }
         else if self.actionBtn2.bounds.contains(convertedactionBtn2) {
             return self.actionBtn2.hitTest(convertedactionBtn2, with: event)

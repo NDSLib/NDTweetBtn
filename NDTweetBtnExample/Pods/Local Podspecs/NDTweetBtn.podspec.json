@@ -1,8 +1,8 @@
 {
   "name": "NDTweetBtn",
   "version": "1.0.0",
-  "summary": "NDTweetBtn!",
-  "description": "NDTweetBtn!?",
+  "summary": "Twitter for iOS tweetButton like.",
+  "description": "NDTweetBtn is Twitter for iOS tweetButton like.",
   "frameworks": [
     "Foundation",
     "UIKit"
@@ -21,9 +21,7 @@
   },
   "source_files": "NDTweetBtn/*",
   "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
-  }
+    "ios": "8.0"
+  },
+  "requires_arc": true
 }

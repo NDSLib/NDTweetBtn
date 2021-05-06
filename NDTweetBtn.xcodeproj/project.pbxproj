@@ -10,7 +10,7 @@
 		E932545A262FEC8A008496A7 /* NDTweetBtn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9325450262FEC8A008496A7 /* NDTweetBtn.framework */; };
 		E932545F262FEC8A008496A7 /* NDTweetBtnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E932545E262FEC8A008496A7 /* NDTweetBtnTests.swift */; };
 		E9325461262FEC8A008496A7 /* NDTweetBtn.h in Headers */ = {isa = PBXBuildFile; fileRef = E9325453262FEC8A008496A7 /* NDTweetBtn.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E9325473262FF2DF008496A7 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325472262FF2DF008496A7 /* NDTweetBtn.swift */; };
+		E93F57212644051400593DF4 /* NDTweetBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9325472262FF2DF008496A7 /* NDTweetBtn.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -198,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9325473262FF2DF008496A7 /* NDTweetBtn.swift in Sources */,
+				E93F57212644051400593DF4 /* NDTweetBtn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
