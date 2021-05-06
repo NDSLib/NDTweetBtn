@@ -36,6 +36,8 @@ class ViewController: UIViewController {
                     print("moon")
                     self.resLabel.text = "moon"
                 })
+        
+        btn.tapped = tapped
 
         btn.addAction(action: action1)
         btn.addAction(action: action2)
@@ -44,6 +46,11 @@ class ViewController: UIViewController {
         btn.setImage(UIImage(systemName: "swift")!)
 
         view.addSubview(btn)
+    }
+    
+    func tapped() {
+        print("swift")
+        self.resLabel.text = "swift"
     }
 
 
