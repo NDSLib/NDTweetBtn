@@ -14,7 +14,7 @@ fileprivate extension Array {
 }
 
 @available(iOS 13.0, *)
-private class NDActionButton: UIView {
+public class NDActionButton: UIView {
     public lazy var imageView: UIImageView = {
         let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         view.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
@@ -42,9 +42,6 @@ private class NDActionButton: UIView {
         imageView.image = image
     }
     
-    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("tapped")
-    }
 }
 
 public class NDTweetBtnAction {
@@ -92,12 +89,9 @@ public class NDTweetBtn: UIView {
         view.frame.origin.x -= 90
         view.frame.origin.y -= 90
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
-//        view.isUserInteractionEnabled = true
-        // FIXME: not working
+        view.tag = 1
         let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
-//        ges.numberOfTapsRequired = 1
         view.addGestureRecognizer(ges)
-//        print(ges)
         return view
     }()
 
@@ -106,6 +100,9 @@ public class NDTweetBtn: UIView {
         view.frame.origin.x -= 120
         view.frame.origin.y -= 10
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.tag = 2
+        let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
+        view.addGestureRecognizer(ges)
         return view
     }()
 
@@ -114,6 +111,9 @@ public class NDTweetBtn: UIView {
         view.frame.origin.x -= 0
         view.frame.origin.y -= 130
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+        view.tag = 0
+        let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
+        view.addGestureRecognizer(ges)
         return view
     }()
 
@@ -127,8 +127,8 @@ public class NDTweetBtn: UIView {
         super.layoutSubviews()
 
         addSubview(baseButton)
-        frame.size.width = 300
-        frame.size.height = 300
+//        frame.size.width = 300
+//        frame.size.height = 300
 
         if actions.count == 0 {
             let btns = [actionBtn0, actionBtn1, actionBtn2]
@@ -169,8 +169,10 @@ public class NDTweetBtn: UIView {
         }
     }
 
-    @objc func onActionBtnPressed(sender: Any) {
-        print("shit")
+    @objc func onActionBtnPressed(sender: UITapGestureRecognizer) {
+        print("onActionButtonPOresserdede")
+        actions[safe: sender.view!.tag]?.handler(actions[sender.view!.tag])
+        isPressing = false
     }
 
     @objc func onLongPressed(sender: UILongPressGestureRecognizer) {
@@ -278,16 +280,25 @@ public class NDTweetBtn: UIView {
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if !isPressing { return super.hitTest(point, with: event) }
-        let convertedPushLeft: CGPoint = self.actionBtn1.convert(point, from: self)
-        let convertedPushRight: CGPoint = self.actionBtn2.convert(point, from: self)
+        let convertedactionBtn0: CGPoint = self.actionBtn0.convert(point, from: self)
+        let convertedactionBtn1: CGPoint = self.actionBtn1.convert(point, from: self)
+        let convertedactionBtn2: CGPoint = self.actionBtn2.convert(point, from: self)
         let convertedBaseButton: CGPoint = self.baseButton.convert(point, to: self)
 
-        if self.actionBtn1.bounds.contains(convertedPushLeft) {
-            return self.actionBtn1.hitTest(convertedPushLeft, with: event)
-        }else if self.actionBtn2.bounds.contains(convertedPushRight) {
-            return self.actionBtn2.hitTest(convertedPushRight, with: event)
-        }else if self.baseButton.bounds.contains(convertedBaseButton) {
+        if self.actionBtn1.bounds.contains(convertedactionBtn0) {
+            return self.actionBtn1.hitTest(convertedactionBtn0, with: event)
+        }
+        else if self.actionBtn2.bounds.contains(convertedactionBtn1) {
+            return self.actionBtn2.hitTest(convertedactionBtn1, with: event)
+        }
+        else if self.actionBtn2.bounds.contains(convertedactionBtn2) {
+            return self.actionBtn2.hitTest(convertedactionBtn2, with: event)
+        }
+        else if self.baseButton.bounds.contains(convertedBaseButton) {
 //            return self.baseButton
+        }
+        else {
+            isPressing = false
         }
         
         return super.hitTest(point, with: event)
