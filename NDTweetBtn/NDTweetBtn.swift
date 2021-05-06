@@ -33,11 +33,17 @@ private class NDActionButton: UIView {
 
         layer.cornerRadius = frame.width / 2
         addSubview(imageView)
+        
+//        isUserInteractionEnabled = false
 
     }
 
     public func setImage(_ image: UIImage) {
         imageView.image = image
+    }
+    
+    public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("tapped")
     }
 }
 
@@ -86,6 +92,12 @@ public class NDTweetBtn: UIView {
         view.frame.origin.x -= 90
         view.frame.origin.y -= 90
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
+//        view.isUserInteractionEnabled = true
+        // FIXME: not working
+        let ges = UITapGestureRecognizer(target: self, action: #selector(self.onActionBtnPressed))
+//        ges.numberOfTapsRequired = 1
+        view.addGestureRecognizer(ges)
+//        print(ges)
         return view
     }()
 
@@ -115,6 +127,8 @@ public class NDTweetBtn: UIView {
         super.layoutSubviews()
 
         addSubview(baseButton)
+        frame.size.width = 300
+        frame.size.height = 300
 
         if actions.count == 0 {
             let btns = [actionBtn0, actionBtn1, actionBtn2]
@@ -123,11 +137,12 @@ public class NDTweetBtn: UIView {
             }
         }
     }
-
+    
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isPressing {
             isPressing = !isPressing
-
+        }else {
+            print("tweet")
         }
     }
 
@@ -152,6 +167,10 @@ public class NDTweetBtn: UIView {
         btns.forEach {
             $0.isHidden = true
         }
+    }
+
+    @objc func onActionBtnPressed(sender: Any) {
+        print("shit")
     }
 
     @objc func onLongPressed(sender: UILongPressGestureRecognizer) {
@@ -214,7 +233,7 @@ public class NDTweetBtn: UIView {
             self.actionBtn1.frame.origin = self.baseButton.frame.insetBy(dx: -90, dy: -90).origin
             self.actionBtn2.frame.origin = self.baseButton.frame.insetBy(dx: -120, dy: -10).origin
             self.actionBtn0.frame.origin = self.baseButton.frame.insetBy(dx: -5, dy: -130).origin
-            self.baseButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9);
+            self.baseButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.8);
         }, completion: { _ in
             self.baseButton.layer.cornerRadius = self.baseButton.bounds.width / 2
         })
@@ -237,9 +256,9 @@ public class NDTweetBtn: UIView {
                 $0.alpha = 0
             }
         }, completion: { _ in
+            self.actionBtn0.removeFromSuperview()
             self.actionBtn1.removeFromSuperview()
             self.actionBtn2.removeFromSuperview()
-            self.actionBtn0.removeFromSuperview()
         })
 
     }
@@ -255,6 +274,24 @@ public class NDTweetBtn: UIView {
         } else {
             return nil
         }
+    }
+    
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        if !isPressing { return super.hitTest(point, with: event) }
+        let convertedPushLeft: CGPoint = self.actionBtn1.convert(point, from: self)
+        let convertedPushRight: CGPoint = self.actionBtn2.convert(point, from: self)
+        let convertedBaseButton: CGPoint = self.baseButton.convert(point, to: self)
+
+        if self.actionBtn1.bounds.contains(convertedPushLeft) {
+            return self.actionBtn1.hitTest(convertedPushLeft, with: event)
+        }else if self.actionBtn2.bounds.contains(convertedPushRight) {
+            return self.actionBtn2.hitTest(convertedPushRight, with: event)
+        }else if self.baseButton.bounds.contains(convertedBaseButton) {
+//            return self.baseButton
+        }
+        
+        return super.hitTest(point, with: event)
+//        return nil
     }
 
 
