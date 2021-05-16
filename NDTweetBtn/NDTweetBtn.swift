@@ -2,8 +2,9 @@
 //  NDTweetBtn.swift
 //  NDTweetBtn
 //
-//  Created by craptone on 2021/04/21.
+//  Created by NDSLib on 2021/04/21.
 //
+//  MIT License
 
 import UIKit
 import AudioToolbox
@@ -67,10 +68,11 @@ public class NDTweetBtn: UIView {
         }
     }
 
-    private lazy var baseButton: NDActionButton = {
+    public lazy var baseButton: NDActionButton = {
         let view = NDActionButton(frame: bounds)
         view.backgroundColor = UIColor(red: 0.16, green: 0.62, blue: 0.95, alpha: 1)
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.onLongPressed))
+        longPress.minimumPressDuration = 0.3
         view.addGestureRecognizer(longPress)
         return view
     }()
@@ -79,7 +81,7 @@ public class NDTweetBtn: UIView {
         super.prepareForInterfaceBuilder()
     }
 
-    private lazy var actionBtn1: NDActionButton = {
+    public lazy var actionBtn1: NDActionButton = {
         let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 90
         view.frame.origin.y -= 90
@@ -90,7 +92,7 @@ public class NDTweetBtn: UIView {
         return view
     }()
 
-    private lazy var actionBtn2: NDActionButton = {
+    public lazy var actionBtn2: NDActionButton = {
         let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 120
         view.frame.origin.y -= 10
@@ -101,7 +103,7 @@ public class NDTweetBtn: UIView {
         return view
     }()
 
-    private lazy var actionBtn0: NDActionButton = {
+    public lazy var actionBtn0: NDActionButton = {
         let view = NDActionButton(frame: bounds)
         view.frame.origin.x -= 0
         view.frame.origin.y -= 130
@@ -132,12 +134,45 @@ public class NDTweetBtn: UIView {
         }
     }
     
+    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        baseButton.imageView.frame.size = CGSize(width: 20, height: 20)
+        baseButton.imageView.center = baseButton.center
+
+        let animation = CABasicAnimation(keyPath: "cornerRadius")
+        animation.duration = 0.1
+        animation.toValue = self.baseButton.bounds.width / 2
+        animation.autoreverses = false
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        baseButton.layer.add(animation, forKey: nil)
+
+        UIView.animate(withDuration: 0.1, animations: {
+            self.baseButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }, completion: { _ in
+        })
+    }
+    
+    public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isPressing {
+            baseBtnTouchUp()
+        }
+    }
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isPressing {
             isPressing = !isPressing
         }else {
             tapped?()
+            baseBtnTouchUp()
         }
+    }
+    
+    private func baseBtnTouchUp() {
+        baseButton.imageView.frame.size = CGSize(width: 30, height: 30)
+        baseButton.imageView.center = baseButton.center
+
+        UIView.animate(withDuration: 0.1, animations: {
+            self.baseButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: { _ in })
     }
 
     public func setImage(_ image: UIImage) {
@@ -182,10 +217,12 @@ public class NDTweetBtn: UIView {
                 return
             }
             
-            AudioServicesPlaySystemSound(1519)
             selectedIndex = actionIndex
             // FIXME
             var actionBtns = [actionBtn0, actionBtn1, actionBtn2]
+            if actionBtns[actionIndex].transform != CGAffineTransform(scaleX: 1.1, y: 1.1) {
+                AudioServicesPlaySystemSound(1519)
+            }
             UIView.animate(withDuration: 0.1, animations: {
                 actionBtns[actionIndex].transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             })
