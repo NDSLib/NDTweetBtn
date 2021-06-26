@@ -154,14 +154,24 @@ public class NDTweetBtn: UIView {
     
     public override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !isPressing {
+            let touch = touches.first!
+            let location = touch.location(in: self.baseButton)
+            if self.baseButton.bounds.contains(location) {
+                tapped?()
+            }
             baseBtnTouchUp()
+            
         }
     }
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isPressing {
             isPressing = !isPressing
         }else {
-            tapped?()
+            let touch = touches.first!
+            let location = touch.location(in: self.baseButton)
+            if self.baseButton.bounds.contains(location) {
+                tapped?()
+            }
             baseBtnTouchUp()
         }
     }
@@ -213,13 +223,18 @@ public class NDTweetBtn: UIView {
             if isInBaseBtn {
                 return
             }
+            var actionBtns = [actionBtn0, actionBtn1, actionBtn2]
+            
             guard let actionIndex = whichActionBtn(point: pos) else {
+                selectedIndex = nil
+                AudioServicesPlaySystemSound(1519)
+                UIView.animate(withDuration: 0.1, animations: {
+                    actionBtns.forEach({ $0.transform = CGAffineTransform(scaleX: 1, y: 1) })
+                })
                 return
             }
             
             selectedIndex = actionIndex
-            // FIXME
-            var actionBtns = [actionBtn0, actionBtn1, actionBtn2]
             if actionBtns[actionIndex].transform != CGAffineTransform(scaleX: 1.1, y: 1.1) {
                 AudioServicesPlaySystemSound(1519)
             }
@@ -305,16 +320,19 @@ public class NDTweetBtn: UIView {
     }
 
     private func whichActionBtn(point: CGPoint) -> Int? {
-        let diff = point.x - point.y
-        if diff > -70 && diff < 70 {
-            return 1
-        } else if diff < 70 {
-            return 2
-        } else if diff > 70 {
+        if cgRect2AboutRect(self.actionBtn0.frame).contains(point) {
             return 0
-        } else {
+        }else if cgRect2AboutRect(self.actionBtn1.frame).contains(point) {
+            return 1
+        }else if cgRect2AboutRect(self.actionBtn2.frame).contains(point) {
+            return 2
+        }else {
             return nil
         }
+    }
+    
+    private func cgRect2AboutRect(_ rect: CGRect) -> CGRect {
+        return CGRect(x: rect.origin.x - 40, y: rect.origin.y - 40, width: rect.size.width + 40, height: rect.size.height + 40)
     }
     
     public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
